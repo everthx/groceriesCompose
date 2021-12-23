@@ -16,10 +16,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.groceriescompose.R
+import com.example.groceriescompose.ui.navigation.Screen
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Surface(color = MaterialTheme.colors.background, elevation = 2.dp) {
 
         Column(
@@ -52,7 +55,7 @@ fun HomeScreen() {
             }
 
             Button(
-                onClick = { /*TODO*/ }, modifier = Modifier
+                onClick = { navController.navigate(Screen.CategoriesScreen.route) }, modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
             ) {
@@ -65,5 +68,6 @@ fun HomeScreen() {
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen()
+    val nav = rememberNavController()
+    HomeScreen(navController = nav)
 }
