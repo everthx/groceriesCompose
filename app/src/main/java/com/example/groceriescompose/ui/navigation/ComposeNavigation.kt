@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.groceriescompose.ui.screens.CategoriesScreen
 import com.example.groceriescompose.ui.screens.HomeScreen
+import com.example.groceriescompose.ui.screens.ItemSelectionScreen
 
 @ExperimentalFoundationApi
 @Composable
@@ -20,6 +21,10 @@ fun ComposeNavigation() {
 
         composable(route = Screen.CategoriesScreen.route){
             CategoriesScreen(navController = navController)
+        }
+
+        composable(route = Screen.SelectionScreen.route){
+            ItemSelectionScreen(navController = navController)
         }
     }
 }

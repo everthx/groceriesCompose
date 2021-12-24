@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="categories">Categorias</string>
+    <string name="fruits">Frutas</string>
+    <string name="vegetables">Verduras</string>
+    <string name="bread_and_cereal">Pan y Cereal</string>
+    <string name="dairy">Lacteos</string>
+    <string name="meat">Carne</string>
+    <string name="frozen">Congelados</string>
+</resources>
