@@ -14,16 +14,16 @@ import com.example.groceriescompose.ui.screens.ItemSelectionScreen
 fun ComposeNavigation() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = Screen.HomeScreen.route ){
-        composable(route = Screen.HomeScreen.route){
+    NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
+        composable(route = Screen.HomeScreen.route) {
             HomeScreen(navController = navController)
         }
 
-        composable(route = Screen.CategoriesScreen.route){
+        composable(route = Screen.CategoriesScreen.route) {
             CategoriesScreen(navController = navController)
         }
 
-        composable(route = Screen.SelectionScreen.route){
+        composable(route = Screen.SelectionScreen.route) {
             ItemSelectionScreen(navController = navController)
         }
     }
