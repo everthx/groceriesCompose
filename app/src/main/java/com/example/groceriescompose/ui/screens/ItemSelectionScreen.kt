@@ -47,7 +47,6 @@ fun ItemSelectionScreen(navController: NavController, argument: String?) {
                 }
             )
         },
-
         bottomBar = {
             BottomAppBar(backgroundColor = MaterialTheme.colors.primary, modifier = Modifier.wrapContentHeight()) {
                 BottomNavigationItem(
@@ -93,7 +92,7 @@ fun ItemSelectionScreen(navController: NavController, argument: String?) {
 @Composable
 fun ItemSelectionScreenPreview() {
     GroceriescomposeTheme() {
-        ItemSelectionScreen(rememberNavController(), "")
+        ItemSelectionScreen(rememberNavController(), "Fruits")
     }
 }
 
@@ -102,6 +101,6 @@ fun ItemSelectionScreenPreview() {
 @Composable
 fun ItemSelectionDarkScreenPreview() {
     GroceriescomposeTheme(darkTheme = true) {
-        ItemSelectionScreen(rememberNavController(), "")
+        ItemSelectionScreen(rememberNavController(), "Fruits")
     }
 }

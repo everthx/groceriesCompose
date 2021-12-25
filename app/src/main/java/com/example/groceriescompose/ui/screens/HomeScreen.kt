@@ -63,8 +63,7 @@ fun HomeScreen(navController: NavController) {
 @Composable
 fun HomeScreenPreview() {
     GroceriescomposeTheme() {
-        val nav = rememberNavController()
-        HomeScreen(navController = nav)
+        HomeScreen(rememberNavController())
     }
 }
 
@@ -72,7 +71,6 @@ fun HomeScreenPreview() {
 @Composable
 fun HomeScreenDarkPreview() {
     GroceriescomposeTheme(darkTheme = true) {
-        val nav = rememberNavController()
-        HomeScreen(navController = nav)
+        HomeScreen(rememberNavController())
     }
 }
