@@ -47,20 +47,21 @@ fun CategoriesScreen(navController: NavController) {
             }
         )
 
-        Surface(
-            modifier = Modifier
-                .fillMaxSize()
-        ) {
+        Surface(color = MaterialTheme.colors.background, modifier = Modifier.fillMaxSize()) {
             LazyVerticalGrid(
                 cells = GridCells.Fixed(2),
                 contentPadding = PaddingValues(8.dp)
             ) {
                 items(items = categories) { item ->
+                    val itemName = stringResource(id = getStringIdFor(item))
+
                     Card(
                         modifier = Modifier
-                            .size(width = 50.dp, height = 150.dp)
-                            .padding(4.dp)
-                            .clickable { navController.navigate(Screen.SelectionScreen.route) },
+                            .size(width = 50.dp, height = 150.dp).padding(4.dp)
+                            .clickable {
+                                navController
+                                    .navigate(Screen.SelectionScreen.route + "/${itemName}")
+                            },
                         backgroundColor = Color(
                             red = 40,
                             green = 209,
@@ -75,11 +76,11 @@ fun CategoriesScreen(navController: NavController) {
                         ) {
                             Image(
                                 modifier = Modifier.size(80.dp),
-                                painter = painterResource(id = getImageFor(item)),
+                                painter = painterResource(id = getImageIdFor(item)),
                                 contentDescription = null
                             )
                             Text(
-                                text = getStringFor(item),
+                                text = itemName,
                                 textAlign = TextAlign.Center,
                                 fontSize = 16.sp,
                                 modifier = Modifier.padding(4.dp)
@@ -92,7 +93,7 @@ fun CategoriesScreen(navController: NavController) {
     }
 }
 
-private fun getImageFor(item: UICategories): Int {
+private fun getImageIdFor(item: UICategories): Int {
     return when (item) {
         UICategories.Fruits -> R.drawable.ic_fruits
         UICategories.Vegetables -> R.drawable.ic_vegetables
@@ -103,14 +104,14 @@ private fun getImageFor(item: UICategories): Int {
     }
 }
 
-private fun getStringFor(item: UICategories): String {
+private fun getStringIdFor(item: UICategories): Int {
     return when (item) {
-        UICategories.Fruits -> "Fruits"
-        UICategories.Vegetables -> "Vegetables"
-        UICategories.Bread -> "Bread and Cereal"
-        UICategories.Dairy -> "Dairy"
-        UICategories.Meat -> "Meat"
-        UICategories.Frozen -> "Frozen"
+        UICategories.Fruits -> R.string.fruits
+        UICategories.Vegetables -> R.string.vegetables
+        UICategories.Bread -> R.string.bread_and_cereal
+        UICategories.Dairy -> R.string.dairy
+        UICategories.Meat -> R.string.meat
+        UICategories.Frozen -> R.string.frozen
     }
 }
 
@@ -118,16 +119,16 @@ private fun getStringFor(item: UICategories): String {
 @Preview
 @Composable
 fun CategoriesScreenPreview() {
-    val nav = rememberNavController()
-    CategoriesScreen(navController = nav)
+    GroceriescomposeTheme() {
+        CategoriesScreen(navController = rememberNavController())
+    }
 }
 
 @ExperimentalFoundationApi
-@Preview
+@Preview(locale = "ES")
 @Composable
 fun CategoriesDarkScreenPreview() {
     GroceriescomposeTheme(darkTheme = true) {
-        val nav = rememberNavController()
-        CategoriesScreen(navController = nav)
+        CategoriesScreen(navController = rememberNavController())
     }
 }

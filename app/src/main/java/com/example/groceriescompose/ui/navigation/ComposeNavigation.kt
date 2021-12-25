@@ -23,8 +23,8 @@ fun ComposeNavigation() {
             CategoriesScreen(navController = navController)
         }
 
-        composable(route = Screen.SelectionScreen.route) {
-            ItemSelectionScreen(navController = navController)
+        composable(route = Screen.SelectionScreen.route+"/{category}") {
+            ItemSelectionScreen(navController = navController, it.arguments?.getString("category"))
         }
     }
 }
