@@ -52,7 +52,7 @@ fun ItemSelectionScreen(navController: NavController, argument: String?) {
             BottomAppBar(backgroundColor = MaterialTheme.colors.primary, modifier = Modifier.wrapContentHeight()) {
                 BottomNavigationItem(
                     selected = true,
-                    onClick = { /*TODO*/ },
+                    onClick = { navController.navigate(Screen.HomeScreen.route) },
                     label = { Text(text = "Save List") },
                     icon = {
                         Icon(
@@ -93,8 +93,7 @@ fun ItemSelectionScreen(navController: NavController, argument: String?) {
 @Composable
 fun ItemSelectionScreenPreview() {
     GroceriescomposeTheme() {
-        val nav = rememberNavController()
-        ItemSelectionScreen(nav, "")
+        ItemSelectionScreen(rememberNavController(), "")
     }
 }
 
@@ -103,7 +102,6 @@ fun ItemSelectionScreenPreview() {
 @Composable
 fun ItemSelectionDarkScreenPreview() {
     GroceriescomposeTheme(darkTheme = true) {
-        val nav = rememberNavController()
-        ItemSelectionScreen(nav, "")
+        ItemSelectionScreen(rememberNavController(), "")
     }
 }
