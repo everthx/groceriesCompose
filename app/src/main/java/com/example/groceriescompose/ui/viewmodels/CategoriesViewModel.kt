@@ -1,4 +1,6 @@
 package com.example.groceriescompose.ui.viewmodels
 
-class CategoriesViewModel {
+import androidx.lifecycle.ViewModel
+
+class CategoriesViewModel: ViewModel() {
 }

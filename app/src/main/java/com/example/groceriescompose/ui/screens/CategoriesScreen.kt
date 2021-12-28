@@ -32,6 +32,7 @@ private val categories = Categories().categoriesList
 @ExperimentalFoundationApi
 @Composable
 fun CategoriesScreen(navController: NavController) {
+
     Column() {
         TopAppBar(
             title = { Text(text = stringResource(id = R.string.categories)) },
