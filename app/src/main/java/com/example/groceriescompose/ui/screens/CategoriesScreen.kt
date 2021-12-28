@@ -57,16 +57,12 @@ fun CategoriesScreen(navController: NavController) {
 
                     Card(
                         modifier = Modifier
-                            .size(width = 50.dp, height = 150.dp).padding(4.dp)
+                            .size(width = 50.dp, height = 150.dp)
+                            .padding(4.dp)
                             .clickable {
-                                navController
-                                    .navigate(Screen.SelectionScreen.route + "/${itemName}")
+                                navController.navigate(Screen.SelectionScreen.route + "/${itemName}")
                             },
-                        backgroundColor = Color(
-                            red = 40,
-                            green = 209,
-                            blue = 189
-                        ),
+                        backgroundColor = Color(red = 40, green = 209, blue = 189),
                         shape = RoundedCornerShape(5.dp),
                         elevation = 8.dp
                     ) {
@@ -80,10 +76,8 @@ fun CategoriesScreen(navController: NavController) {
                                 contentDescription = null
                             )
                             Text(
-                                text = itemName,
-                                textAlign = TextAlign.Center,
-                                fontSize = 16.sp,
-                                modifier = Modifier.padding(4.dp)
+                                text = itemName, textAlign = TextAlign.Center,
+                                fontSize = 16.sp, modifier = Modifier.padding(4.dp)
                             )
                         }
                     }
