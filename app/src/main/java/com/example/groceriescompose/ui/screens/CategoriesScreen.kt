@@ -22,8 +22,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.groceriescompose.R
-import com.example.groceriescompose.ui.models.Categories
-import com.example.groceriescompose.ui.models.UICategories
 import com.example.groceriescompose.ui.navigation.Screen
 import com.example.groceriescompose.ui.theme.GroceriescomposeTheme
 import com.example.groceriescompose.ui.viewmodels.CategoriesViewModel
