@@ -19,6 +19,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.groceriescompose.R
 import com.example.groceriescompose.ui.navigation.Screen
+import com.example.groceriescompose.ui.screens.components.MakeTopBar
 import com.example.groceriescompose.ui.theme.GroceriescomposeTheme
 
 private val itemList: List<String> =
@@ -34,18 +35,12 @@ fun ItemSelectionScreen(navController: NavController, argument: String?) {
 
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = { Text(text = argument!!) },
-                backgroundColor = MaterialTheme.colors.primary,
-                navigationIcon = {
-                    IconButton(onClick = { navController.navigate(Screen.CategoriesScreen.route) }) {
-                        Icon(
-                            painterResource(id = R.drawable.ic_arrow_back_24),
-                            contentDescription = null, modifier = Modifier.size(30.dp)
-                        )
-                    }
-                }
-            )
+                 MakeTopBar(title = argument!!) {
+                     navController.navigate(Screen.CategoriesScreen.route){
+                         popUpTo(Screen.CategoriesScreen.route)
+                         launchSingleTop = true
+                     }
+                 }
         },
         bottomBar = {
             BottomAppBar(

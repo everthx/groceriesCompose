@@ -23,6 +23,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.groceriescompose.R
 import com.example.groceriescompose.ui.navigation.Screen
+import com.example.groceriescompose.ui.screens.components.MakeTopBar
 import com.example.groceriescompose.ui.theme.GroceriescomposeTheme
 import com.example.groceriescompose.ui.viewmodels.CategoriesViewModel
 
@@ -30,23 +31,14 @@ import com.example.groceriescompose.ui.viewmodels.CategoriesViewModel
 @Composable
 fun CategoriesScreen(navController: NavController, viewModel: CategoriesViewModel) {
 
-    val viewModel = CategoriesViewModel()
     val categories = viewModel.categoriesList
 
-    Column() {
-        TopAppBar(
-            title = { Text(text = stringResource(id = R.string.categories)) },
-            backgroundColor = MaterialTheme.colors.primary,
-            navigationIcon = {
-                IconButton(onClick = { navController.navigate(Screen.HomeScreen.route) }) {
-                    Icon(
-                        painterResource(id = R.drawable.ic_arrow_back_24),
-                        contentDescription = null,
-                        modifier = Modifier.size(30.dp)
-                    )
-                }
+    Column {
+        MakeTopBar(title = stringResource(id = R.string.categories)) {
+            navController.navigate(Screen.HomeScreen.route) {
+                popUpTo(Screen.HomeScreen.route)
             }
-        )
+        }
 
         Surface(color = MaterialTheme.colors.background, modifier = Modifier.fillMaxSize()) {
             LazyVerticalGrid(
