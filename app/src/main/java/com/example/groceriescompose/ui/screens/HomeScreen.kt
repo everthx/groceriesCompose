@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -20,46 +21,39 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.groceriescompose.R
 import com.example.groceriescompose.ui.navigation.Screen
+import com.example.groceriescompose.ui.theme.GroceriescomposeTheme
 
 @Composable
 fun HomeScreen(navController: NavController) {
     Surface(color = MaterialTheme.colors.background, elevation = 2.dp) {
 
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(16.dp),
+            modifier = Modifier.fillMaxSize().padding(16.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_food_drive_vector),
-                contentDescription = "Groceries Image",
-                modifier = Modifier
-                    .padding(16.dp)
-                    .size(240.dp)
-                    .clip(CircleShape)
+                painter = painterResource(id = R.drawable.ic_groceries_main),
+                contentDescription = null,
+                modifier = Modifier.padding(16.dp).size(240.dp).clip(CircleShape)
             )
 
             Text(
-                text = "Welcome to GroceriesApp",
+                text = stringResource(id = R.string.welcome_to_groceries_app),
                 fontSize = 24.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(16.dp)
             )
 
             Button(
-                onClick = { /*TODO*/ }, modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
+                onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth().padding(16.dp)
             ) {
-                Text(text = "View Current List")
+                Text(text = stringResource(id = R.string.view_current_screen))
             }
 
             Button(
-                onClick = { navController.navigate(Screen.CategoriesScreen.route) }, modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp)
+                onClick = { navController.navigate(Screen.CategoriesScreen.route) },
+                modifier = Modifier.fillMaxWidth().padding(16.dp)
             ) {
-                Text(text = "Create/Add to list")
+                Text(text = stringResource(id = R.string.create_add_to_list))
             }
         }
     }
@@ -68,6 +62,15 @@ fun HomeScreen(navController: NavController) {
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    val nav = rememberNavController()
-    HomeScreen(navController = nav)
+    GroceriescomposeTheme() {
+        HomeScreen(rememberNavController())
+    }
+}
+
+@Preview
+@Composable
+fun HomeScreenDarkPreview() {
+    GroceriescomposeTheme(darkTheme = true) {
+        HomeScreen(rememberNavController())
+    }
 }

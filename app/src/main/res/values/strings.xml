@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">groceriescompose</string>
+    <string name="app_name" translatable="false">groceriescompose</string>
+
+    <!-- Home Screen -->
+    <string name="welcome_to_groceries_app">Welcome to the GroceriesApp</string>
+    <string name="view_current_screen">View Current List</string>
+    <string name="create_add_to_list">Create/Add to list</string>
+
+    <!-- Categories Screen -->
+    <string name="categories">Categories</string>
+    <string name="fruits">Fruits</string>
+    <string name="vegetables">Vegetables</string>
+    <string name="bread_and_cereal">Bread and Cereal</string>
+    <string name="dairy">Dairy</string>
+    <string name="meat">Meat</string>
+    <string name="frozen">Frozen</string>
+
+
 </resources>

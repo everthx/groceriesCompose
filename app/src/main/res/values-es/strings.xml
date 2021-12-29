@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Home Screen -->
+    <string name="welcome_to_groceries_app">Bienvenido a la GroceriesApp</string>
+    <string name="view_current_screen">Ver Lista Actual</string>
+    <string name="create_add_to_list">Crear/Añador a la lista</string>
+
+    <!-- Categories Screen -->
+    <string name="categories">Categorias</string>
+    <string name="fruits">Frutas</string>
+    <string name="vegetables">Verduras</string>
+    <string name="bread_and_cereal">Pan y Cereal</string>
+    <string name="dairy">Lacteos</string>
+    <string name="meat">Carne</string>
+    <string name="frozen">Congelados</string>
+</resources>
