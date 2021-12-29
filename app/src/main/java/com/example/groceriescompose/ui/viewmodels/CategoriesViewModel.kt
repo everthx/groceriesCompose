@@ -2,44 +2,44 @@ package com.example.groceriescompose.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.example.groceriescompose.R
-import com.example.groceriescompose.ui.models.UICategories
+import com.example.groceriescompose.ui.models.UICategory
 
 class CategoriesViewModel: ViewModel() {
 
-    val categoriesList: List<UICategories> by lazy {
+    val categoriesList: List<UICategory> by lazy {
         getList()
     }
 
-    private fun getList(): List<UICategories> {
+    private fun getList(): List<UICategory> {
         return listOf(
-            UICategories.Fruits,
-            UICategories.Vegetables,
-            UICategories.Bread,
-            UICategories.Dairy,
-            UICategories.Meat,
-            UICategories.Frozen
+            UICategory.Fruits,
+            UICategory.Vegetables,
+            UICategory.Bread,
+            UICategory.Dairy,
+            UICategory.Meat,
+            UICategory.Frozen
         )
     }
 
-    fun getImageIdFor(item: UICategories): Int {
+    fun getImageIdFor(item: UICategory): Int {
         return when (item) {
-            UICategories.Fruits -> R.drawable.ic_fruits
-            UICategories.Vegetables -> R.drawable.ic_vegetables
-            UICategories.Bread -> R.drawable.ic_grain
-            UICategories.Dairy -> R.drawable.ic_milk
-            UICategories.Meat -> R.drawable.ic_meat
-            UICategories.Frozen -> R.drawable.ic_freezer
+            UICategory.Fruits -> R.drawable.ic_fruits
+            UICategory.Vegetables -> R.drawable.ic_vegetables
+            UICategory.Bread -> R.drawable.ic_grain
+            UICategory.Dairy -> R.drawable.ic_milk
+            UICategory.Meat -> R.drawable.ic_meat
+            UICategory.Frozen -> R.drawable.ic_freezer
         }
     }
 
-    fun getStringIdFor(item: UICategories): Int {
+    fun getStringIdFor(item: UICategory): Int {
         return when (item) {
-            UICategories.Fruits -> R.string.fruits
-            UICategories.Vegetables -> R.string.vegetables
-            UICategories.Bread -> R.string.bread_and_cereal
-            UICategories.Dairy -> R.string.dairy
-            UICategories.Meat -> R.string.meat
-            UICategories.Frozen -> R.string.frozen
+            UICategory.Fruits -> R.string.fruits
+            UICategory.Vegetables -> R.string.vegetables
+            UICategory.Bread -> R.string.bread_and_cereal
+            UICategory.Dairy -> R.string.dairy
+            UICategory.Meat -> R.string.meat
+            UICategory.Frozen -> R.string.frozen
         }
     }
 }

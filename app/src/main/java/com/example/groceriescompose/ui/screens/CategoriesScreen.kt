@@ -45,15 +45,15 @@ fun CategoriesScreen(navController: NavController, viewModel: CategoriesViewMode
                 cells = GridCells.Fixed(2),
                 contentPadding = PaddingValues(8.dp)
             ) {
-                items(items = categories) { item ->
-                    val itemName = stringResource(id = viewModel.getStringIdFor(item))
+                items(items = categories) { category ->
+                    val itemName = stringResource(id = viewModel.getStringIdFor(category))
 
                     Card(
                         modifier = Modifier
                             .size(width = 50.dp, height = 150.dp)
                             .padding(8.dp)
                             .clickable {
-                                navController.navigate(Screen.SelectionScreen.route + "/${itemName}")
+                                navController.navigate(Screen.SelectionScreen.route + "/${category.name}")
                             },
                         backgroundColor = Color(red = 40, green = 209, blue = 189),
                         shape = RoundedCornerShape(5.dp),
@@ -65,7 +65,7 @@ fun CategoriesScreen(navController: NavController, viewModel: CategoriesViewMode
                         ) {
                             Image(
                                 modifier = Modifier.size(80.dp),
-                                painter = painterResource(id = viewModel.getImageIdFor(item)),
+                                painter = painterResource(id = viewModel.getImageIdFor(category)),
                                 contentDescription = null
                             )
                             Text(

@@ -21,17 +21,13 @@ import com.example.groceriescompose.R
 import com.example.groceriescompose.ui.navigation.Screen
 import com.example.groceriescompose.ui.screens.components.MakeTopBar
 import com.example.groceriescompose.ui.theme.GroceriescomposeTheme
-
-private val itemList: List<String> =
-    listOf(
-        "Apple", "Banana", "Peach", "Carrots", "Potatoes", "Milk", "Eggs", "Tomatoes", "Zucaritas",
-        "Apple", "Banana", "Peach", "Carrots", "Potatoes", "Milk", "Eggs", "Tomatoes", "Zucaritas",
-        "Apple", "Banana", "Peach", "Carrots", "Potatoes", "Milk", "Eggs", "Tomatoes", "Zucaritas"
-    )
+import com.example.groceriescompose.ui.viewmodels.ItemSelectionViewModel
 
 @ExperimentalFoundationApi
 @Composable
-fun ItemSelectionScreen(navController: NavController, argument: String?) {
+fun ItemSelectionScreen(navController: NavController, argument: String?, viewModel: ItemSelectionViewModel) {
+
+    val itemList: List<String> = viewModel.getItemsUnder(argument!!)
 
     Scaffold(
         topBar = {
@@ -50,7 +46,10 @@ fun ItemSelectionScreen(navController: NavController, argument: String?) {
                 BottomNavigationItem(
                     selected = true,
                     onClick = {
-                        navController.navigate(Screen.HomeScreen.route) { popUpTo(Screen.HomeScreen.route) }
+                        navController.navigate(Screen.HomeScreen.route) {
+                            popUpTo(Screen.HomeScreen.route)
+                            launchSingleTop = true
+                        }
                     },
                     label = { Text(text = "Save List") },
                     icon = {
@@ -92,7 +91,7 @@ fun ItemSelectionScreen(navController: NavController, argument: String?) {
 @Composable
 fun ItemSelectionScreenPreview() {
     GroceriescomposeTheme() {
-        ItemSelectionScreen(rememberNavController(), "Fruits")
+        ItemSelectionScreen(rememberNavController(), "Fruits", ItemSelectionViewModel())
     }
 }
 
@@ -101,6 +100,6 @@ fun ItemSelectionScreenPreview() {
 @Composable
 fun ItemSelectionDarkScreenPreview() {
     GroceriescomposeTheme(darkTheme = true) {
-        ItemSelectionScreen(rememberNavController(), "Fruits")
+        ItemSelectionScreen(rememberNavController(), "Fruits", ItemSelectionViewModel())
     }
 }

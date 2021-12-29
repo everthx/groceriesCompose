@@ -9,12 +9,14 @@ import com.example.groceriescompose.ui.screens.CategoriesScreen
 import com.example.groceriescompose.ui.screens.HomeScreen
 import com.example.groceriescompose.ui.screens.ItemSelectionScreen
 import com.example.groceriescompose.ui.viewmodels.CategoriesViewModel
+import com.example.groceriescompose.ui.viewmodels.ItemSelectionViewModel
 
 @ExperimentalFoundationApi
 @Composable
 fun ComposeNavigation() {
     val navController = rememberNavController()
     val categoriesViewModel = CategoriesViewModel()
+    val itemSelectionViewModel = ItemSelectionViewModel()
 
     NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
         composable(route = Screen.HomeScreen.route) {
@@ -25,8 +27,12 @@ fun ComposeNavigation() {
             CategoriesScreen(navController, categoriesViewModel)
         }
 
-        composable(route = Screen.SelectionScreen.route+"/{category}") {
-            ItemSelectionScreen(navController, it.arguments?.getString("category"))
+        composable(route = Screen.SelectionScreen.route + "/{category}") {
+            ItemSelectionScreen(
+                navController,
+                it.arguments?.getString("category"),
+                itemSelectionViewModel
+            )
         }
     }
 }

@@ -1,10 +1,10 @@
 package com.example.groceriescompose.ui.models
 
-sealed class UICategories {
-    object Fruits : UICategories()
-    object Vegetables : UICategories()
-    object Bread : UICategories()
-    object Dairy : UICategories()
-    object Meat : UICategories()
-    object Frozen : UICategories()
+sealed class UICategory(val name: String) {
+    object Fruits : UICategory("Fruits")
+    object Vegetables : UICategory("Vegetables")
+    object Bread : UICategory("Bread and Cereal")
+    object Dairy : UICategory("Dairy")
+    object Meat : UICategory("Meat")
+    object Frozen : UICategory("Frozen")
 }
