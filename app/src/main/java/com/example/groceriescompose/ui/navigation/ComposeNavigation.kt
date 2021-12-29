@@ -8,23 +8,25 @@ import androidx.navigation.compose.rememberNavController
 import com.example.groceriescompose.ui.screens.CategoriesScreen
 import com.example.groceriescompose.ui.screens.HomeScreen
 import com.example.groceriescompose.ui.screens.ItemSelectionScreen
+import com.example.groceriescompose.ui.viewmodels.CategoriesViewModel
 
 @ExperimentalFoundationApi
 @Composable
 fun ComposeNavigation() {
     val navController = rememberNavController()
+    val categoriesViewModel = CategoriesViewModel()
 
     NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
         composable(route = Screen.HomeScreen.route) {
-            HomeScreen(navController = navController)
+            HomeScreen(navController)
         }
 
         composable(route = Screen.CategoriesScreen.route) {
-            CategoriesScreen(navController = navController)
+            CategoriesScreen(navController, categoriesViewModel)
         }
 
         composable(route = Screen.SelectionScreen.route+"/{category}") {
-            ItemSelectionScreen(navController = navController, it.arguments?.getString("category"))
+            ItemSelectionScreen(navController, it.arguments?.getString("category"))
         }
     }
 }

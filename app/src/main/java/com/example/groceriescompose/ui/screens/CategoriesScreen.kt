@@ -26,12 +26,14 @@ import com.example.groceriescompose.ui.models.Categories
 import com.example.groceriescompose.ui.models.UICategories
 import com.example.groceriescompose.ui.navigation.Screen
 import com.example.groceriescompose.ui.theme.GroceriescomposeTheme
-
-private val categories = Categories().categoriesList
+import com.example.groceriescompose.ui.viewmodels.CategoriesViewModel
 
 @ExperimentalFoundationApi
 @Composable
-fun CategoriesScreen(navController: NavController) {
+fun CategoriesScreen(navController: NavController, viewModel: CategoriesViewModel) {
+
+    val viewModel = CategoriesViewModel()
+    val categories = viewModel.categoriesList
 
     Column() {
         TopAppBar(
@@ -54,12 +56,12 @@ fun CategoriesScreen(navController: NavController) {
                 contentPadding = PaddingValues(8.dp)
             ) {
                 items(items = categories) { item ->
-                    val itemName = stringResource(id = getStringIdFor(item))
+                    val itemName = stringResource(id = viewModel.getStringIdFor(item))
 
                     Card(
                         modifier = Modifier
                             .size(width = 50.dp, height = 150.dp)
-                            .padding(4.dp)
+                            .padding(8.dp)
                             .clickable {
                                 navController.navigate(Screen.SelectionScreen.route + "/${itemName}")
                             },
@@ -73,7 +75,7 @@ fun CategoriesScreen(navController: NavController) {
                         ) {
                             Image(
                                 modifier = Modifier.size(80.dp),
-                                painter = painterResource(id = getImageIdFor(item)),
+                                painter = painterResource(id = viewModel.getImageIdFor(item)),
                                 contentDescription = null
                             )
                             Text(
@@ -88,34 +90,12 @@ fun CategoriesScreen(navController: NavController) {
     }
 }
 
-private fun getImageIdFor(item: UICategories): Int {
-    return when (item) {
-        UICategories.Fruits -> R.drawable.ic_fruits
-        UICategories.Vegetables -> R.drawable.ic_vegetables
-        UICategories.Bread -> R.drawable.ic_grain
-        UICategories.Dairy -> R.drawable.ic_milk
-        UICategories.Meat -> R.drawable.ic_meat
-        UICategories.Frozen -> R.drawable.ic_freezer
-    }
-}
-
-private fun getStringIdFor(item: UICategories): Int {
-    return when (item) {
-        UICategories.Fruits -> R.string.fruits
-        UICategories.Vegetables -> R.string.vegetables
-        UICategories.Bread -> R.string.bread_and_cereal
-        UICategories.Dairy -> R.string.dairy
-        UICategories.Meat -> R.string.meat
-        UICategories.Frozen -> R.string.frozen
-    }
-}
-
 @ExperimentalFoundationApi
 @Preview
 @Composable
 fun CategoriesScreenPreview() {
     GroceriescomposeTheme() {
-        CategoriesScreen(navController = rememberNavController())
+        CategoriesScreen(rememberNavController(), CategoriesViewModel())
     }
 }
 
@@ -124,6 +104,6 @@ fun CategoriesScreenPreview() {
 @Composable
 fun CategoriesDarkScreenPreview() {
     GroceriescomposeTheme(darkTheme = true) {
-        CategoriesScreen(navController = rememberNavController())
+        CategoriesScreen(rememberNavController(), CategoriesViewModel())
     }
 }

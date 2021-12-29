@@ -48,10 +48,15 @@ fun ItemSelectionScreen(navController: NavController, argument: String?) {
             )
         },
         bottomBar = {
-            BottomAppBar(backgroundColor = MaterialTheme.colors.primary, modifier = Modifier.wrapContentHeight()) {
+            BottomAppBar(
+                backgroundColor = MaterialTheme.colors.primary,
+                modifier = Modifier.wrapContentHeight()
+            ) {
                 BottomNavigationItem(
                     selected = true,
-                    onClick = { navController.navigate(Screen.HomeScreen.route) },
+                    onClick = {
+                        navController.navigate(Screen.HomeScreen.route) { popUpTo(Screen.HomeScreen.route) }
+                    },
                     label = { Text(text = "Save List") },
                     icon = {
                         Icon(
