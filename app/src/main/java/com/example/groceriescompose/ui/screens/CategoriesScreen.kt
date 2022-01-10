@@ -19,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.groceriescompose.R
@@ -29,9 +30,9 @@ import com.example.groceriescompose.ui.viewmodels.CategoriesViewModel
 
 @ExperimentalFoundationApi
 @Composable
-fun CategoriesScreen(navController: NavController, viewModel: CategoriesViewModel) {
+fun CategoriesScreen(navController: NavController, categoriesViewModel: CategoriesViewModel = viewModel()) {
 
-    val categories = viewModel.categoriesList
+    val categories = categoriesViewModel.categoriesList
 
     Column {
         MakeTopBar(title = stringResource(id = R.string.categories)) {
@@ -46,7 +47,7 @@ fun CategoriesScreen(navController: NavController, viewModel: CategoriesViewMode
                 contentPadding = PaddingValues(8.dp)
             ) {
                 items(items = categories) { category ->
-                    val itemName = stringResource(id = viewModel.getStringIdFor(category))
+                    val itemName = stringResource(id = categoriesViewModel.getStringIdFor(category))
 
                     Card(
                         modifier = Modifier
@@ -65,7 +66,7 @@ fun CategoriesScreen(navController: NavController, viewModel: CategoriesViewMode
                         ) {
                             Image(
                                 modifier = Modifier.size(80.dp),
-                                painter = painterResource(id = viewModel.getImageIdFor(category)),
+                                painter = painterResource(id = categoriesViewModel.getImageIdFor(category)),
                                 contentDescription = null
                             )
                             Text(
@@ -85,7 +86,7 @@ fun CategoriesScreen(navController: NavController, viewModel: CategoriesViewMode
 @Composable
 fun CategoriesScreenPreview() {
     GroceriescomposeTheme() {
-        CategoriesScreen(rememberNavController(), CategoriesViewModel())
+        CategoriesScreen(rememberNavController())
     }
 }
 
@@ -94,6 +95,6 @@ fun CategoriesScreenPreview() {
 @Composable
 fun CategoriesDarkScreenPreview() {
     GroceriescomposeTheme(darkTheme = true) {
-        CategoriesScreen(rememberNavController(), CategoriesViewModel())
+        CategoriesScreen(rememberNavController())
     }
 }

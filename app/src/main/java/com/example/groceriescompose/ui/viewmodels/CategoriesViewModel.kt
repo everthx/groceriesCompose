@@ -1,10 +1,18 @@
 package com.example.groceriescompose.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.groceriescompose.R
+import com.example.groceriescompose.domain.usecases.ItemUseCases
 import com.example.groceriescompose.ui.models.UICategory
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CategoriesViewModel: ViewModel() {
+@HiltViewModel
+class CategoriesViewModel @Inject constructor() : ViewModel() {
+
+    @Inject lateinit var itemUseCases: ItemUseCases
 
     val categoriesList: List<UICategory> by lazy {
         getList()
@@ -19,6 +27,12 @@ class CategoriesViewModel: ViewModel() {
             UICategory.Meat,
             UICategory.Frozen
         )
+    }
+
+    fun test(){
+        viewModelScope.launch {
+            val result = itemUseCases.clearDatabaseUseCase
+        }
     }
 
     fun getImageIdFor(item: UICategory): Int {

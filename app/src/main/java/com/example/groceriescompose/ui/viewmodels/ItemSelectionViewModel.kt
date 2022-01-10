@@ -2,10 +2,13 @@ package com.example.groceriescompose.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import com.example.groceriescompose.data.StockList
-import com.example.groceriescompose.mappers.StringCategoryToUICategoryMapper
+import com.example.groceriescompose.domain.mappers.StringCategoryToUICategoryMapper
 import com.example.groceriescompose.ui.models.UICategory
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ItemSelectionViewModel : ViewModel() {
+@HiltViewModel
+class ItemSelectionViewModel @Inject constructor() : ViewModel() {
 
     private val categoryMapper = StringCategoryToUICategoryMapper()
 
